@@ -41,6 +41,18 @@ app.command('/halp', async ({ command, ack, say, respond }) => {
     );  
     return;
   }  
+  if (command.text.includes('hr')) {
+    await respond(
+      'RoomNr:337 - Email:hr@experience.no'
+    );  
+    return;
+  }  
+  if (command.text.includes('husgruppe')) {
+    await respond(
+      'Email: helpdesk@knowit.no'
+    );  
+    return;
+  }  
       await respond(
       '42'
     ); 
