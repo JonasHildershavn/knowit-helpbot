@@ -3,7 +3,6 @@ const store = require("./store");
 const messages = require("./messages");
 const helpers = require("./helpers");
 const data = require("./data");
-const fuzz = require('fuzzball');
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -16,24 +15,20 @@ const app = new App({
 
 app.command('/halp', async ({ command, ack, say, respond }) => {
   await ack();
-  console.log('Kudos!');
   
   let args = command.text.slice('halp');
   console.log(args);
   
-  if (command.text.includes('personalhåndbok')){
+  let personalhåndbok = helpers.copy(data.personalhåndbok);
+  if (vpn.searchwords.filter(n=>args.includes(n))){
     await respond(
       'Personalhåndbok: Url here!'
     );
   return;
-  }
-  
+  } 
   
   let vpn = helpers.copy(data.vpn);
-  console.log(vpn);
-  let ratio = fuzz.ratio(vpn.searchwords, args);
-  console.log(ratio);
-  if (ratio >= 20) {
+  if (vpn.searchwords.filter(n=>args.includes(n))) {
     await respond(
       'VPN: '+ vpn.url
     );  
@@ -48,19 +43,22 @@ app.command('/halp', async ({ command, ack, say, respond }) => {
     return;
   }  
   
-    if (command.text.includes('tea') || command.text.includes('coffee')) {
+  let teaorcoffe = helpers.copy(data.teaorcoffe);
+  if (teaorcoffe.searchwords.filter(n=>args.includes(n))){
     await respond(
       'Coffee!'
     );  
     return;
   }  
-  if (command.text.includes('hr')) {
+  let hr = helpers.copy(data.hr);
+  if (hr.searchwords.filter(n=>args.includes(n))){
     await respond(
       'RoomNr:337 - Email:hr@experience.no'
     );  
     return;
   }  
-  if (command.text.includes('husgruppe')) {
+  let husgruppe = helpers.copy(data.husgruppe);
+  if (husgruppe.searchwords.filter(n=>args.includes(n))){
     await respond(
       'Email: helpdesk@knowit.no'
     );  
