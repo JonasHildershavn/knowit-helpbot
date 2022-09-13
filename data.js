@@ -26,7 +26,6 @@ module.exports = {
   },
   personalhåndbok: {
     searchwords: ["personalhåndbok", ],
-    adress: "",
     message: {
       blocks: [
         {

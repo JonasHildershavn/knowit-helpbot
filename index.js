@@ -15,15 +15,13 @@ const app = new App({
 
 function matchWord(word, searchwords) {
   let max = 0;
-  let result = searchwords[0];
-  for (let i = 0; i > searchwords.length - 1; i++) {
-    const fuzzRatio = fuzzymatch.ratio(word, [i]);
+  searchwords.forEach(searchWord => {
+    let fuzzRatio = fuzzymatch.ratio(word, searchWord);
     if (fuzzRatio > max) {
       max = fuzzRatio;
-      result = searchwords[i];
     }
-  }
-  return result;
+  })
+  return max;
 }
 
 app.command("/halp", async ({ command, ack, say, respond }) => {
@@ -34,39 +32,53 @@ app.command("/halp", async ({ command, ack, say, respond }) => {
 
   let personalhåndbok = helpers.copy(data.personalhåndbok);
   inputWords.forEach(async word => {
-    if (matchWord(word, personalhåndbok.searchwords) > 0.9){
+    if (matchWord(word, personalhåndbok.searchwords) > 90){
       await respond(personalhåndbok.message);
       return;
     }
   });
 
   let vpn = helpers.copy(data.vpn);
-  if (vpn.searchwords.filter((n) => args.includes(n))) {
-    await respond("VPN: " + vpn.url);
-    return;
-  }
+  inputWords.forEach(async word => {
+    if (matchWord(word, vpn.searchwords) > 90){
+      await respond(vpn.message);
+      return;
+    }
+  });  
 
   let printer = helpers.copy(data.printer);
-  if (printer.searchwords.filter((n) => args.includes(n))) {
-    await respond("Printer: Url here!");
-    return;
-  }
+  inputWords.forEach(async word => {
+    if (matchWord(word, printer.searchwords) > 90){
+      await respond(printer.message);
+      return;
+    }
+  });   
+  
+  let teaorcoffe = helpers.copy(data.printer);
+  inputWords.forEach(async word => {
+    if (matchWord(word, teaorcoffe.searchwords) > 90){
+      await respond(teaorcoffe.message);
+      return;
+    }
+  });   
 
-  let teaorcoffe = helpers.copy(data.teaorcoffe);
-  if (teaorcoffe.searchwords.filter((n) => args.includes(n))) {
-    await respond("Coffee!");
-    return;
-  }
   let hr = helpers.copy(data.hr);
-  if (hr.searchwords.filter((n) => args.includes(n))) {
-    await respond("RoomNr:337 - Email:hr@experience.no");
-    return;
-  }
+  inputWords.forEach(async word => {
+    if (matchWord(word, hr.searchwords) > 90){
+      await respond(hr.message);
+      return;
+    }
+  });   
+  
+  
   let husgruppe = helpers.copy(data.husgruppe);
-  if (husgruppe.searchwords.filter((n) => args.includes(n))) {
-    await respond("Email: helpdesk@knowit.no");
-    return;
-  }
+  inputWords.forEach(async word => {
+    if (matchWord(word, husgruppe.searchwords) > 90){
+      await respond(husgruppe.message);
+      return;
+    }
+  });     
+
   await respond("42");
 });
 
