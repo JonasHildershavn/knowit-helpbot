@@ -87,7 +87,7 @@ app.command("/halp", async ({ command, ack, say, respond }) => {
     }
   });     
 
-  await respond("42");
+  //await respond("42"); TODO: Det er noe krøll med async her. Bare sjekk med å skrive /halp personalhåndbok personalhåndbok personalhåndbok
 });
 
 /**
@@ -102,7 +102,7 @@ a link to this message will be posted to the configured channel
 **/
 app.event("reaction_added", async ({ event, client }) => {
   // only react to ⚡ (:zap:) emoji
-  if (event.reaction === "zap") {
+  if (event.reaction === "question") {
     let channelId = event.item.channel;
     let ts = event.item.ts;
 

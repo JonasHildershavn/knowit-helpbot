@@ -164,7 +164,7 @@ module.exports = {
           type: "section",
           text: {
             type: "mrkdwn",
-            text: "Coffee, always",
+            text: "Jeg har funnet ut av at du mest sannsynlig leter etter noe som finnes her :point_right: <https://helpit.knowit.no|helpit.knowit.no>",
           },
         },
         {
