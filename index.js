@@ -17,6 +17,9 @@ app.command('/halp', async ({ command, ack, say, respond }) => {
   await ack();
   console.log('Kudos!');
   
+  let args = command.text.slice('halp');
+  console.log(args);
+  
   if (command.text.includes('personalhåndbok')){
     await respond(
       'Personalhåndbok: Url here!'
@@ -27,7 +30,7 @@ app.command('/halp', async ({ command, ack, say, respond }) => {
   
   let vpn = helpers.copy(data.vpn);
   console.log(vpn);
-  if (command.text.includes(vpn.searchwords)) {
+  if (vpn.searchwords.includes(args)) {
     await respond(
       'VPN: '+ vpn.url
     );  
