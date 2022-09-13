@@ -3,7 +3,7 @@
 let messages = {};
 let users = {};
 let me = undefined;
-let defaultChannel = {id: "knowit-helpbot-alpha"};
+let defaultChannel = {id: "C04265ZAAE7"};
 
 exports.getMessages = () => {
   return messages;
