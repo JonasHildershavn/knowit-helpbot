@@ -39,7 +39,9 @@ app.command('/halp', async ({ command, ack, say, respond }) => {
     );  
     return;
   }
-  if (command.text.includes('printer') || command.text.includes('skriver')){
+  
+  let printer = helpers.copy(data.printer);
+  if (printer.searchwords.filter(n=>args.includes(n))){
     await respond(
       'Printer: Url here!'
     );  
