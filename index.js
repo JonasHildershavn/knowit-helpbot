@@ -3,6 +3,7 @@ const store = require("./store");
 const messages = require("./messages");
 const helpers = require("./helpers");
 const data = require("./data");
+const fuzz = require('fuzzball');
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -30,13 +31,15 @@ app.command('/halp', async ({ command, ack, say, respond }) => {
   
   let vpn = helpers.copy(data.vpn);
   console.log(vpn);
-  if (vpn.searchwords.includes(args)) {
+  let ratio = fuzz.ratio(vpn.searchwords, args);
+  console.log(ratio);
+  if (ratio >= 20) {
     await respond(
       'VPN: '+ vpn.url
     );  
     return;
   }
-  if (command.text.includes('printer')) {
+  if (command.text.includes('printer') || command.text.includes('skriver')){
     await respond(
       'Printer: Url here!'
     );  

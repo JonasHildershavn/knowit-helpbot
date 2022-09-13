@@ -1,6 +1,6 @@
 module.exports = {
-  vpn: {
-    searchwords: "vpn virtual private network",
+  printer: {
+    searchwords: ["printer","skriver"],
     url: "test",
   }
 };
