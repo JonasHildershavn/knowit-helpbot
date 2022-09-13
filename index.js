@@ -2,6 +2,7 @@ const { App } = require("@slack/bolt");
 const store = require("./store");
 const messages = require("./messages");
 const helpers = require("./helpers");
+const data = require("./data");
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -22,9 +23,9 @@ app.command('/halp', async ({ command, ack, say, respond }) => {
     );
   return;
   }
-  if (command.text.includes('vpn')) {
+  if (command.text.includes(data.vpn)) {
     await respond(
-      'VPN: Url here!'
+      'VPN: '+ data.url
     );  
     return;
   }
