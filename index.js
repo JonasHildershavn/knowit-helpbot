@@ -25,7 +25,7 @@ app.command('/halp', async ({ command, ack, say, respond }) => {
   }
   if (command.text.includes(data.vpn)) {
     await respond(
-      'VPN: '+ data.url
+      'VPN: '+ data.vpn.url
     );  
     return;
   }
