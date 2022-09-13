@@ -16,13 +16,11 @@ app.command('/halp', async ({ command, ack, say, respond }) => {
   await ack();
   console.log('Kudos!');
   
-      // post this message to the configured channel
-    await client.chat.postMessage({
-      channel: channel && channel.id,
-      text: name + ' wants you to see this message: ' + permalink.permalink,
-      unfurl_links: true,
-      unfurl_media: true
-    });
+  if (command.text.contains(''))
+    await respond(
+      'Personalhåndbok: Url here!'
+    );
+    return;
   
   
 });
