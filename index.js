@@ -12,14 +12,19 @@ const app = new App({
 });
 
 
-app.command('/kudos', async ({ command, ack, say, respond }) => {
+app.command('/halp', async ({ command, ack, say, respond }) => {
   await ack();
-  if (!command.text.startsWith("<@)" || command.text.includes(" ")) {
-    await respond(
-      `You can only give kudos by mentioning a user with @<username>. ${command.text} is not valid.`
-    );
-    return;
-  }
+  console.log('Kudos!');
+  
+      // post this message to the configured channel
+    await client.chat.postMessage({
+      channel: channel && channel.id,
+      text: name + ' wants you to see this message: ' + permalink.permalink,
+      unfurl_links: true,
+      unfurl_media: true
+    });
+  
+  
 });
 
 /**
