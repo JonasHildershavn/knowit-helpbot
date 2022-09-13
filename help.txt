@@ -1,0 +1,4 @@
+Feriepenger (Vacation money)
+Regler for ferie (Rules for vacation)
+Printer (How to set up printer)
+We can collect all the questions and if the bot doesn't have an answer, the question is posted to a channel where HR, Kristoffer Sæbøe and Operations (drift@knowit.no) is represented and they can reply with a link and add the answer for the next one who asks

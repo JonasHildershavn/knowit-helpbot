@@ -16,11 +16,34 @@ app.command('/halp', async ({ command, ack, say, respond }) => {
   await ack();
   console.log('Kudos!');
   
-  if (command.text.contains(''))
+  if (command.text.includes('personalhåndbok')){
     await respond(
       'Personalhåndbok: Url here!'
     );
+  return;
+  }
+  if (command.text.includes('vpn')) {
+    await respond(
+      'VPN: Url here!'
+    );  
     return;
+  }
+  if (command.text.includes('printer')) {
+    await respond(
+      'Printer: Url here!'
+    );  
+    return;
+  }  
+  
+    if (command.text.includes('tea') || command.text.includes('coffee')) {
+    await respond(
+      'Coffee!'
+    );  
+    return;
+  }  
+      await respond(
+      '42'
+    ); 
   
   
 });
