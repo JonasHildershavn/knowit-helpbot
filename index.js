@@ -10,76 +10,64 @@ const app = new App({
   appToken: process.env.SLACK_APP_TOKEN,
   signingSecret: process.env.SLACK_SIGNING_SECRET,
   socketMode: true,
-  ignoreSelf: false
+  ignoreSelf: false,
 });
 
-function matchWord(word, searchwords){
+function matchWord(word, searchwords) {
   let max = 0;
   let result = searchwords[0];
-  for(let i = 0; i > searchwords.length - 1; i++){
-    
-    if (fuzzymatch.ratio(word, [i]) > max){
-      
+  for (let i = 0; i > searchwords.length - 1; i++) {
+    const fuzzRatio = fuzzymatch.ratio(word, [i]);
+    if (fuzzRatio > max) {
+      max = fuzzRatio;
+      result = searchwords[i];
     }
   }
+  return result;
 }
 
-app.command('/halp', async ({ command, ack, say, respond }) => {
+app.command("/halp", async ({ command, ack, say, respond }) => {
   await ack();
-  
-  let args = command.text.slice('halp');
-  console.log(args);
-  
+
+  let args = command.text.slice("halp");
+  let inputWords = args.split(" ");
+
   let personalhåndbok = helpers.copy(data.personalhåndbok);
-  if (personalhåndbok.searchwords.filter(n=>args.includes(n))){
-    await respond(
-      personalhåndbok.message
-    );
-  return;
-  } 
-  
+  inputWords.forEach(async word => {
+    if (matchWord(word, personalhåndbok.searchwords) > 0.9){
+      await respond(personalhåndbok.message);
+      return;
+    }
+  });
+
   let vpn = helpers.copy(data.vpn);
-  if (vpn.searchwords.filter(n=>args.includes(n))) {
-    await respond(
-      'VPN: '+ vpn.url
-    );  
+  if (vpn.searchwords.filter((n) => args.includes(n))) {
+    await respond("VPN: " + vpn.url);
     return;
   }
-  
+
   let printer = helpers.copy(data.printer);
-  if (printer.searchwords.filter(n=>args.includes(n))){
-    await respond(
-      'Printer: Url here!'
-    );  
+  if (printer.searchwords.filter((n) => args.includes(n))) {
+    await respond("Printer: Url here!");
     return;
-  }  
-  
+  }
+
   let teaorcoffe = helpers.copy(data.teaorcoffe);
-  if (teaorcoffe.searchwords.filter(n=>args.includes(n))){
-    await respond(
-      'Coffee!'
-    );  
+  if (teaorcoffe.searchwords.filter((n) => args.includes(n))) {
+    await respond("Coffee!");
     return;
-  }  
+  }
   let hr = helpers.copy(data.hr);
-  if (hr.searchwords.filter(n=>args.includes(n))){
-    await respond(
-      'RoomNr:337 - Email:hr@experience.no'
-    );  
+  if (hr.searchwords.filter((n) => args.includes(n))) {
+    await respond("RoomNr:337 - Email:hr@experience.no");
     return;
-  }  
+  }
   let husgruppe = helpers.copy(data.husgruppe);
-  if (husgruppe.searchwords.filter(n=>args.includes(n))){
-    await respond(
-      'Email: helpdesk@knowit.no'
-    );  
+  if (husgruppe.searchwords.filter((n) => args.includes(n))) {
+    await respond("Email: helpdesk@knowit.no");
     return;
-  }  
-      await respond(
-      '42'
-    ); 
-  
-  
+  }
+  await respond("42");
 });
 
 /**
@@ -92,9 +80,9 @@ We use this event to check if the added emoji (reactji) is a ⚡ (:zap:) emoji. 
 a link to this message will be posted to the configured channel
 
 **/
-app.event('reaction_added', async ({ event, client }) => {
+app.event("reaction_added", async ({ event, client }) => {
   // only react to ⚡ (:zap:) emoji
-  if (event.reaction === 'zap') {
+  if (event.reaction === "zap") {
     let channelId = event.item.channel;
     let ts = event.item.ts;
 
@@ -106,22 +94,22 @@ app.event('reaction_added', async ({ event, client }) => {
 
     // get user info of user who reacted to this message
     const user = await client.users.info({
-      user: event.user
+      user: event.user,
     });
 
     // formatting the user's name to mention that user in the message (see: https://api.slack.com/messaging/composing/formatting)
-    let name = '<@' + user.user.id + '>';
+    let name = "<@" + user.user.id + ">";
     let channel = store.getChannel();
 
     // post this message to the configured channel
     await client.chat.postMessage({
       channel: channel && channel.id,
-      text: name + ' wants you to see this message: ' + permalink.permalink,
+      text: name + " wants you to see this message: " + permalink.permalink,
       unfurl_links: true,
-      unfurl_media: true
+      unfurl_media: true,
     });
   }
-})
+});
 
 /**
 
@@ -132,7 +120,7 @@ https://api.slack.com/events/member_joined_channel
 We use this event to introduce our App once it's added to a channel
 
 **/
-app.event('member_joined_channel', async ({ event, say }) => {
+app.event("member_joined_channel", async ({ event, say }) => {
   let channel = store.getChannel();
   let user = event.user;
 
@@ -141,8 +129,8 @@ app.event('member_joined_channel', async ({ event, say }) => {
     let message = helpers.copy(messages.welcome_channel);
     // fill in placeholder values with channel info
     message.blocks[0].text.text = message.blocks[0].text.text
-      .replace('{{channelName}}', channel.name)
-      .replace('{{channelId}}', channel.id);
+      .replace("{{channelName}}", channel.name)
+      .replace("{{channelId}}", channel.id);
     await say(message);
   }
 });
