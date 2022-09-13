@@ -11,6 +11,17 @@ const app = new App({
   ignoreSelf: false
 });
 
+
+app.command('/kudos', async ({ command, ack, say, respond }) => {
+  await ack();
+  if (!command.text.startsWith("<@)" || command.text.includes(" ")) {
+    await respond(
+      `You can only give kudos by mentioning a user with @<username>. ${command.text} is not valid.`
+    );
+    return;
+  }
+});
+
 /**
 
 `reaction_added` event is triggered when a user adds a reaction to a message in a channel where the Bot User is part of
