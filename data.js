@@ -1,7 +1,27 @@
 module.exports = {
   vpn: {
-    searchwords: ["vpn"],
-    adress: "test-vpn",
+    searchwords: ["vpn", "ivpn"],
+    message: {
+      blocks: [
+        {
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text: "Jeg har funnet ut av at du mest sannsynlig leter etter noe som finnes her :point_right: <https://knowit.sharepoint.com/sites/groupcommon/itsupport/SitePages/iVPN.aspx|VPN>",
+          },
+        },
+        {
+          type: "divider",
+        },
+        {
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text: "Hvis du har spørsmål til det som står i personalhåndboka, send melding til @jonas.hildershavn",
+          },
+        },
+      ],
+    },
   },
   printer: {
     searchwords: [
@@ -12,7 +32,27 @@ module.exports = {
       "skriver jeg ut",
       "printeren",
     ],
-    adress: "test-printer",
+    message: {
+      blocks: [
+        {
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text: "Jeg har funnet ut av at du mest sannsynlig leter etter noe som finnes her :point_right: <https://knowit.sharepoint.com/sites/groupcommon/itsupport/SitePages/Knowit%20Print.aspx|Pull print>",
+          },
+        },
+        {
+          type: "divider",
+        },
+        {
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text: "Hvis du har spørsmål til det som står i personalhåndboka, send melding til @jonas.hildershavn",
+          },
+        },
+      ],
+    },
   },
   feriepenger: {
     searchwords: [
@@ -22,10 +62,30 @@ module.exports = {
       "lønn i juni",
       "holiday paycheck",
     ],
-    adress: "test-personalhåndbok",
+    message: {
+      blocks: [
+        {
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text: "Jeg har funnet ut av at du mest sannsynlig leter etter noe som finnes her :point_right: <https://handbooks.simployer.com/nb-no/handbook/100545|Personalhåndboka> eller du kan spørre HR: <a mailto:hr@experience.no></a>",
+          },
+        },
+        {
+          type: "divider",
+        },
+        {
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text: "Hvis du har spørsmål til det som står i personalhåndboka, send melding til @jonas.hildershavn",
+          },
+        },
+      ],
+    },
   },
   personalhåndbok: {
-    searchwords: ["personalhåndbok", ],
+    searchwords: ["personalhåndbok"],
     message: {
       blocks: [
         {
@@ -43,6 +103,54 @@ module.exports = {
           text: {
             type: "mrkdwn",
             text: "Hvis du har spørsmål til det som står i personalhåndboka, send melding til @jonas.hildershavn",
+          },
+        },
+      ],
+    },
+  },
+  hr: {
+    searchwords: ["hr"],
+    message: {
+      blocks: [
+        {
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text: "Jeg har funnet ut av at du mest sannsynlig leter etter noe som finnes her :point_right: <a mailto:hr@experience.no></a>",
+          },
+        },
+        {
+          type: "divider",
+        },
+        {
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text: "Hvis du har spørsmål til det som står i personalhåndboka, send melding til @jonas.hildershavn",
+          },
+        },
+      ],
+    },
+  },
+  teaorcoffee: {
+    searchwords: ["tea", "coffee"],
+    message: {
+      blocks: [
+        {
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text: "Coffee, always!",
+          },
+        },
+        {
+          type: "divider",
+        },
+        {
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text: "Hvis du har spørsmål kan du drite i å sende melding til @jonas.hildershavn",
           },
         },
       ],
