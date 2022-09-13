@@ -68,7 +68,7 @@ module.exports = {
           type: "section",
           text: {
             type: "mrkdwn",
-            text: "Jeg har funnet ut av at du mest sannsynlig leter etter noe som finnes her :point_right: <https://handbooks.simployer.com/nb-no/handbook/100545|Personalhåndboka> eller du kan spørre HR",
+            text: "Penger er ikke alt her i livet, men sjekk litt om hvordan feriepenger funker her :point_right: <https://handbooks.simployer.com/nb-no/handbook/100545|Personalhåndboka> eller send mail til HR <mailto:hr@experience.no|Send mail>",
           },
         },
         {
@@ -140,7 +140,7 @@ module.exports = {
           type: "section",
           text: {
             type: "mrkdwn",
-            text: "Coffee, always!",
+            text: "Coffee, always",
           },
         },
         {
@@ -156,4 +156,28 @@ module.exports = {
       ],
     },
   },
+  husgruppe: {
+    searchwords: ["husgruppe", "u7"],
+    message: {
+      blocks: [
+        {
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text: "Coffee, always",
+          },
+        },
+        {
+          type: "divider",
+        },
+        {
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text: "Hvis du har spørsmål kan du drite i å sende melding til @jonas.hildershavn",
+          },
+        },
+      ],
+    },
+  },  
 };

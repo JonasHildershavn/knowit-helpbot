@@ -54,10 +54,18 @@ app.command("/halp", async ({ command, ack, say, respond }) => {
     }
   });   
   
-  let teaorcoffe = helpers.copy(data.printer);
+  let feriepenger = helpers.copy(data.feriepenger);
   inputWords.forEach(async word => {
-    if (matchWord(word, teaorcoffe.searchwords) > 90){
-      await respond(teaorcoffe.message);
+    if (matchWord(word, feriepenger.searchwords) > 90){
+      await respond(feriepenger.message);
+      return;
+    }
+  });     
+  
+  let teaorcoffee = helpers.copy(data.teaorcoffee);
+  inputWords.forEach(async word => {
+    if (matchWord(word, teaorcoffee.searchwords) > 90){
+      await respond(teaorcoffee.message);
       return;
     }
   });   
