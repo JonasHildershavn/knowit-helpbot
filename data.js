@@ -68,7 +68,7 @@ module.exports = {
           type: "section",
           text: {
             type: "mrkdwn",
-            text: "Jeg har funnet ut av at du mest sannsynlig leter etter noe som finnes her :point_right: <https://handbooks.simployer.com/nb-no/handbook/100545|Personalhåndboka> eller du kan spørre HR: <a mailto:hr@experience.no></a>",
+            text: "Jeg har funnet ut av at du mest sannsynlig leter etter noe som finnes her :point_right: <https://handbooks.simployer.com/nb-no/handbook/100545|Personalhåndboka> eller du kan spørre HR",
           },
         },
         {
