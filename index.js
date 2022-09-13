@@ -20,9 +20,9 @@ app.command('/halp', async ({ command, ack, say, respond }) => {
   console.log(args);
   
   let personalhåndbok = helpers.copy(data.personalhåndbok);
-  if (vpn.searchwords.filter(n=>args.includes(n))){
+  if (personalhåndbok.searchwords.filter(n=>args.includes(n))){
     await respond(
-      'Personalhåndbok: Url here!'
+      personalhåndbok.message
     );
   return;
   } 
