@@ -23,9 +23,13 @@ app.command('/halp', async ({ command, ack, say, respond }) => {
     );
   return;
   }
-  if (command.text.includes(data.vpn)) {
+  
+  
+  let vpn = helpers.copy(data.vpn);
+  console.log(vpn);
+  if (command.text.includes(vpn.searchwords)) {
     await respond(
-      'VPN: '+ data.vpn.url
+      'VPN: '+ vpn.url
     );  
     return;
   }
