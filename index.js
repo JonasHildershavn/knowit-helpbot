@@ -3,6 +3,7 @@ const store = require("./store");
 const messages = require("./messages");
 const helpers = require("./helpers");
 const data = require("./data");
+const fuzzymatch = require("fuzzball");
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -12,6 +13,16 @@ const app = new App({
   ignoreSelf: false
 });
 
+function matchWord(word, searchwords){
+  let max = 0;
+  let result = searchwords[0];
+  for(let i = 0; i > searchwords.length - 1; i++){
+    
+    if (fuzzymatch.ratio(word, [i]) > max){
+      
+    }
+  }
+}
 
 app.command('/halp', async ({ command, ack, say, respond }) => {
   await ack();
