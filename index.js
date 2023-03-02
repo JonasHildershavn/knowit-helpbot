@@ -4,6 +4,7 @@ const messages = require("./messages");
 const helpers = require("./helpers");
 const data = require("./data");
 const fuzzymatch = require("fuzzball");
+require("dotenv").config();
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -162,7 +163,7 @@ app.error(async (error) => {
 
 // Start your app
 (async () => {
-  await app.start(process.env.PORT || 3000);
+  await app.start(process.env.PORT || 8080);
   console.log("⚡️ Bolt app is running!");
 
   // after the app is started we are going to retrieve our Bot's user id through
