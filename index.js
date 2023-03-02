@@ -25,7 +25,7 @@ function matchWord(word, searchwords) {
   return max;
 }
 
-app.command("/halp", async ({ command, ack, say, respond }) => {
+app.command("/info", async ({ command, ack, say, respond }) => {
   await ack();
   await respond("42");
   // let args = command.text.slice("halp");
