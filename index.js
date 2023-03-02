@@ -28,7 +28,7 @@ function matchWord(word, searchwords) {
 app.command("/info", async ({ command, ack, say, respond }) => {
   await ack();
   await respond("42");
-  let args = command.text.slice("halp");
+  let args = command.text.slice("info");
   let inputWords = args.split(" ");
 
   let personalhåndbok = helpers.copy(data.personalhåndbok);
