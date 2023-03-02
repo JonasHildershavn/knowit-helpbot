@@ -27,67 +27,67 @@ function matchWord(word, searchwords) {
 
 app.command("/info", async ({ command, ack, say, respond }) => {
   await ack();
-  await respond("42");
-  let args = command.text.slice("info");
-  let inputWords = args.split(" ");
+  await respond("At least its deployed.");
+  // let args = command.text.slice("info");
+  // let inputWords = args.split(" ");
 
-  let personalhåndbok = helpers.copy(data.personalhåndbok);
-  inputWords.forEach(async (word) => {
-    if (matchWord(word, personalhåndbok.searchwords) > 90) {
-      await respond(personalhåndbok.message);
-      return;
-    }
-  });
+  // let personalhåndbok = helpers.copy(data.personalhåndbok);
+  // inputWords.forEach(async (word) => {
+  //   if (matchWord(word, personalhåndbok.searchwords) > 90) {
+  //     await respond(personalhåndbok.message);
+  //     return;
+  //   }
+  // });
 
-  let vpn = helpers.copy(data.vpn);
-  inputWords.forEach(async (word) => {
-    if (matchWord(word, vpn.searchwords) > 90) {
-      await respond(vpn.message);
-      return;
-    }
-  });
+  // let vpn = helpers.copy(data.vpn);
+  // inputWords.forEach(async (word) => {
+  //   if (matchWord(word, vpn.searchwords) > 90) {
+  //     await respond(vpn.message);
+  //     return;
+  //   }
+  // });
 
-  let printer = helpers.copy(data.printer);
-  inputWords.forEach(async (word) => {
-    if (matchWord(word, printer.searchwords) > 90) {
-      await respond(printer.message);
-      return;
-    }
-  });
+  // let printer = helpers.copy(data.printer);
+  // inputWords.forEach(async (word) => {
+  //   if (matchWord(word, printer.searchwords) > 90) {
+  //     await respond(printer.message);
+  //     return;
+  //   }
+  // });
 
-  let feriepenger = helpers.copy(data.feriepenger);
-  inputWords.forEach(async (word) => {
-    if (matchWord(word, feriepenger.searchwords) > 90) {
-      await respond(feriepenger.message);
-      return;
-    }
-  });
+  // let feriepenger = helpers.copy(data.feriepenger);
+  // inputWords.forEach(async (word) => {
+  //   if (matchWord(word, feriepenger.searchwords) > 90) {
+  //     await respond(feriepenger.message);
+  //     return;
+  //   }
+  // });
 
-  let teaorcoffee = helpers.copy(data.teaorcoffee);
-  inputWords.forEach(async (word) => {
-    if (matchWord(word, teaorcoffee.searchwords) > 90) {
-      await respond(teaorcoffee.message);
-      return;
-    }
-  });
+  // let teaorcoffee = helpers.copy(data.teaorcoffee);
+  // inputWords.forEach(async (word) => {
+  //   if (matchWord(word, teaorcoffee.searchwords) > 90) {
+  //     await respond(teaorcoffee.message);
+  //     return;
+  //   }
+  // });
 
-  let hr = helpers.copy(data.hr);
-  inputWords.forEach(async (word) => {
-    if (matchWord(word, hr.searchwords) > 90) {
-      await respond(hr.message);
-      return;
-    }
-  });
+  // let hr = helpers.copy(data.hr);
+  // inputWords.forEach(async (word) => {
+  //   if (matchWord(word, hr.searchwords) > 90) {
+  //     await respond(hr.message);
+  //     return;
+  //   }
+  // });
 
-  let husgruppe = helpers.copy(data.husgruppe);
-  inputWords.forEach(async (word) => {
-    if (matchWord(word, husgruppe.searchwords) > 90) {
-      await respond(husgruppe.message);
-      return;
-    }
-  });
+  // let husgruppe = helpers.copy(data.husgruppe);
+  // inputWords.forEach(async (word) => {
+  //   if (matchWord(word, husgruppe.searchwords) > 90) {
+  //     await respond(husgruppe.message);
+  //     return;
+  //   }
+  // });
 
-  await respond("42"); //TODO: Det er noe krøll med async her. Bare sjekk med å skrive /halp personalhåndbok personalhåndbok personalhåndbok
+  // await respond("42"); //TODO: Det er noe krøll med async her. Bare sjekk med å skrive /halp personalhåndbok personalhåndbok personalhåndbok
 });
 
 /**
