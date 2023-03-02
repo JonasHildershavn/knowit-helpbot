@@ -9,12 +9,13 @@
     "start": "node index.js"
   },
   "engines": {
-    "node": "14.x"
+    "node": "18.x"
   },
   "author": "Slack Technologies, Inc.",
   "license": "MIT",
   "dependencies": {
     "@slack/bolt": "^3.3.0",
+    "dotenv": "^16.0.3",
     "fuzzball": "^2.1.2"
   }
 }
